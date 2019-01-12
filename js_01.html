@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tugas Javascript</title>
+    <style>
+        .mt-5 {
+            margin-top: 5px;
+        }
+        .title-page {
+            text-align: center;
+        }
+        #wrapper {
+            margin: 0 auto;
+            border: 1px solid rgb(139, 187, 248);
+            padding: 5px;
+            overflow: auto;
+            border-radius: 3px;
+        }
+        select {
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        #object-move {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: tomato;
+            position: relative;
+            left: 0px;
+            top: 0px;
+            transition: all .5s;
+        }
+        .nav--wrapper {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .nav--wrapper button {
+            background-color: rgb(103, 165, 247);
+            border: 1px solid rgb(78, 150, 245);
+            padding: 5px 12px 7px 12px;
+            width: 60px;
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color .5s;
+        }
+        .nav--wrapper button:hover {
+            background-color: rgb(39, 121, 230);
+        }
+        .nav--wrapper .nav--double button {
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+        .custom-arrow {
+            display: block;
+        }
+        .custom-arrow.up {
+            transform: rotate(-90deg);
+            margin-left: -3px;
+        }
+        .custom-arrow.down {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <h4 class="title-page">Tugas Javascript</h4>
+
+    <!-- <p>Isi Form : <b id="text-1">Paragraph 1</b></p> -->
+    <!-- <br> -->
+
+    <div id="wrapper">
+        <div id="object-move"></div>
+    </div>
+
+    <div class="nav--wrapper">
+        <div class="nav--single">
+            <button onClick="moveUp()">
+                <div class="custom-arrow up">
+                    &raquo;
+                </div>
+            </button>
+        </div>
+        <div class="nav--double mt-5">
+            <button onClick="moveLeft()">
+                &laquo;
+            </button>
+            <button onClick="moveRight()">
+                &raquo;
+            </button>
+        </div>
+        <div class="nav--single mt-5">
+            <button onClick="moveDown()">
+                <div class="custom-arrow down">
+                    &raquo;
+                </div>
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        var wrapper = document.getElementById('wrapper'),
+            object = document.getElementById('object-move'),
+            messageBox = document.getElementById('message-box');
+
+        var marginLeft = 0,
+            marginTop = 0,
+            stepMove = 10,
+            wrapperWidth = 300,
+            wrapperHeight = 150;
+        
+        var messageText = '';
+
+        wrapper.style.width = wrapperWidth+'px';
+        wrapper.style.height = wrapperHeight+'px';
+
+        var moveUp = function() {
+            if(marginTop > 0) {
+                marginTop -= stepMove;
+            }
+
+            object.style.marginLeft = marginLeft+'px';
+            object.style.marginTop = marginTop+'px';
+        };
+
+        var moveRight = function() {
+            if(marginLeft < (wrapperWidth - 20)) {
+                marginLeft += stepMove;
+            }
+            
+            object.style.marginLeft = marginLeft+'px';
+            object.style.marginTop = marginTop+'px';
+        };
+
+        var moveDown = function() {
+            if(marginTop < (wrapperHeight - 20)) {
+                marginTop += stepMove;
+            }
+
+            object.style.marginLeft = marginLeft+'px';
+            object.style.marginTop = marginTop+'px';
+        }
+
+        var moveLeft = function() {
+            if(marginLeft > 0) {
+                marginLeft -= stepMove;
+            }
+
+            object.style.marginLeft = marginLeft+'px';
+            object.style.marginTop = marginTop+'px';
+        }
+    </script>
+</body>
+</html>
